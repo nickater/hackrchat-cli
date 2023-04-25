@@ -1,11 +1,9 @@
-use ferris_says::say; // from the previous step
-use std::io::{stdout, BufWriter};
+mod controller;
+mod ui;
 
 fn main() {
-    let stdout = stdout();
-    let message = String::from("Hello fellow Rustaceans!");
-    let width = message.chars().count();
-
-    let mut writer = BufWriter::new(stdout.lock());
-    say(message.as_bytes(), width, &mut writer).unwrap();
+    controller::auth::hello_from_auth();
+    controller::chat::hello_from_chat();
+    ui::auth::hello_from_auth_ui();
+    ui::chat::hello_from_chat_ui();
 }
