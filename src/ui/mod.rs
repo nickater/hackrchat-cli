@@ -1,2 +1,3 @@
-pub(crate) mod auth;
-pub(crate) mod chat;
+pub mod auth;
+pub mod chat;
+pub mod main;
