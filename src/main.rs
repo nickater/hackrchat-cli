@@ -1,9 +1,23 @@
+use utils::clear;
+
+use crate::ui::main::display_welcome_message;
+
 mod controller;
+mod models;
+mod service;
 mod ui;
+mod utils;
 
 fn main() {
-    controller::auth::hello_from_auth();
-    controller::chat::hello_from_chat();
-    ui::auth::hello_from_auth_ui();
-    ui::chat::hello_from_chat_ui();
+    clear();
+    display_welcome_message();
+    let user = controller::auth::main_auth_controller();
+    if user.is_none() {
+        return;
+    }
+    clear();
+
+    if let Some(_user) = user {
+        controller::main::main_controller();
+    }
 }
