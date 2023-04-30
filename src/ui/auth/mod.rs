@@ -1,23 +1,23 @@
 use inquire::{InquireError, Password, Select, Text};
 
-use crate::models::Credentials;
+use crate::models::credential::Credential;
 
-pub fn login() -> Credentials {
+pub fn login() -> Credential {
     let credentials = fetch_credentials();
     println!("Login");
     credentials
 }
 
-pub fn register() -> Credentials {
+pub fn register() -> Credential {
     let credentials = fetch_credentials();
     println!("Register");
     credentials
 }
 
-fn fetch_credentials() -> Credentials {
+fn fetch_credentials() -> Credential {
     let username = fetch_username();
     let password = fetch_password();
-    Credentials::new(username, password)
+    Credential::new(username, password)
 }
 
 fn fetch_username() -> String {

@@ -3,8 +3,7 @@ mod existing;
 mod new;
 
 pub fn main_chat_controller() {
-    let mut is_running = true;
-    while is_running {
+    loop {
         let options: Vec<&str> = vec!["New", "Existing", "Back"];
         let choice = ui::chat::chat_menu(options);
 
@@ -12,8 +11,8 @@ pub fn main_chat_controller() {
         match choice {
             "New" => new::new_chat_controller(),
             "Existing" => existing::existing_chat_controller(),
-            "Back" => is_running = false,
-            _ => (),
+            "Back" => break,
+            _ => break,
         };
     }
 }

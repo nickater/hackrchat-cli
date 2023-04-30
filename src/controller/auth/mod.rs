@@ -1,4 +1,4 @@
-use crate::{models::User, ui::auth, utils::clear};
+use crate::{models::user::User, ui::auth, utils::clear};
 
 pub fn main_auth_controller() -> Option<User> {
     let options: Vec<&str> = vec!["Login", "Register", "Exit"];

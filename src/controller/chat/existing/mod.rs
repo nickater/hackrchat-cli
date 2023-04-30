@@ -1,15 +1,24 @@
-use std::{env, fs};
-
-use crate::ui;
+use crate::{models::chat::Chat, ui};
 
 pub fn existing_chat_controller() {
-    let is_running = true;
-    // fetch exiting chats from database and put them in a vector
-    while is_running {
-        let options: Vec<&str> = vec!["nater", "gus22", "staceyk"];
-        let choice = ui::chat::chat_menu(options);
-        if let Ok(home_dir) = env::var("HOME") {
-            fs::write(home_dir + "/.hcrc", choice.to_string()).expect("Unable to write to file");
+    // fetch existing chats from database and put them in a vector
+    loop {
+        // let options: Vec<&str> = vec!["nater", "gus22", "staceyk"];
+
+        let chats = vec![
+            Chat::new(1, "nater".to_string(), "hello".to_string()),
+            Chat::new(1, "gus22".to_string(), "hello".to_string()),
+            Chat::new(1, "skater".to_string(), "hello".to_string()),
+            Chat::new(1, "cleo".to_string(), "hello".to_string()),
+        ];
+
+        let choice = ui::chat::existing_chat_menu(&chats);
+
+        match choice {
+            "Back" => break,
+            _ => (),
         }
+
+        // fetch chat history from database and put them in a vector
     }
 }
